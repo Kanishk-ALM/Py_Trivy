@@ -9,8 +9,8 @@ on:
   pull_request:
     branches: [ "main" ]
 
-permissions:
-  contents: read
+# permissions:
+#   contents: read
 
 jobs:
   build:
@@ -43,10 +43,10 @@ jobs:
         scan-type: 'fs'
         ignore-unfixed: true
         format: 'sarif'
-        output: trivy-results.sarif
+        output: 'trivy-results.sarif'
         severity: 'CRITICAL,HIGH'
 
     - name: Upload Trivy scan results to GitHub Security tab
       uses: github/codeql-action/upload-sarif@v2
       with:
-        sarif_file: trivy-results.sarif
+        sarif_file: 'trivy-results.sarif'
